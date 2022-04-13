@@ -4,22 +4,14 @@ import { Usuario } from './usuario.entity';
 @Injectable()
 export class UsuarioService {
 
-    private usuarios = [{
-        id: 1,
-        nomeDeUsuario: 'andre',
-        email: 'andre@email.com',
-        senha: '123456',
-        nomeCompleto: 'andre nome',
-        dataEntrada: new Date()
+    private usuarios = [];
 
-    }];
-
-    public criaUsuario(usuario) {
+    public criaUsuario({ usuario }: { usuario; }): Usuario {
         this.usuarios.push(usuario);
         return usuario;
     }
 
-    public buscaPorUsuario(nomeDeUsuario: string): Usuario {
+    public buscaPorUsuario({ nomeDeUsuario }: { nomeDeUsuario: string; }): Usuario {
         return this.usuarios.find(usuario => usuario.nomeDeUsuario = nomeDeUsuario);
     }
 

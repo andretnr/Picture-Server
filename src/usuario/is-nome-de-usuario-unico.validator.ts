@@ -7,20 +7,20 @@ import { UsuarioService } from "./usuario.service";
 export class IsNomeDeUsuarioUnicoConstraint implements ValidatorConstraintInterface {
     constructor(private usuarioService: UsuarioService) { }
 
-    validate(nomeDeUsuario: string, validationArguments?: ValidationArguments): boolean | Promise<boolean> {
-        return !!!this.usuarioService.buscaPorUsuario(nomeDeUsuario);
+    validate(nomeDeUsuario: string, _validationArguments?: ValidationArguments): boolean | Promise<boolean> {
+        return !!!this.usuarioService.buscaPorUsuario({ nomeDeUsuario });
     }
 }
 
 export function IsNomeDeUsuarioUnico(validationOptions: ValidationOptions) {
-    return function (object: Object, propertyName: string) {
+    return (object: Object, propertyName: string) => {
         registerDecorator({
             target: object.constructor,
             propertyName: propertyName,
             options: validationOptions,
             constraints: [],
             validator: IsNomeDeUsuarioUnicoConstraint
-        })
+        });
     }
 
 }

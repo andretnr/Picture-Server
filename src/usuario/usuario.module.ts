@@ -12,4 +12,4 @@ import { UsuarioService } from './usuario.service';
     IsNomeDeUsuarioUnicoConstraint
   ],
 })
-export class UsuarioModule { }
+export class UsuarioModule {}
