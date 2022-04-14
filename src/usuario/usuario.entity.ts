@@ -20,7 +20,9 @@ export class Usuario {
     })
     nomeDeUsuario: string;
 
-    @IsNotEmpty()
+    @Expose({
+        name: 'email'
+    })
     @IsEmail({}, {
         message: 'E-mail está incorreto'
     })
