@@ -8,7 +8,7 @@ export class IsNomeDeUsuarioUnicoConstraint implements ValidatorConstraintInterf
     constructor(private usuarioService: UsuarioService) { }
 
     validate(nomeDeUsuario: string, _validationArguments?: ValidationArguments): boolean | Promise<boolean> {
-        return !!!this.usuarioService.buscaPorUsuario({ nomeDeUsuario });
+        return !!!this.usuarioService.buscaPorNomeUsuario(nomeDeUsuario);
     }
 }
 
